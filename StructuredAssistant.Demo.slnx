@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="AgentToolGateway.Api/AgentToolGateway.Api.csproj" Id="feba4b00-d5c4-4164-8619-03c4e57b4ef2" />
   <Project Path="StructuredAssistant.Demo/StructuredAssistant.Demo.csproj" />
 </Solution>

@@ -1,0 +1,51 @@
+@host = https://localhost:51861
+
+### List tools
+GET {{host}}/api/tools
+
+### Search code
+POST {{host}}/api/tool-calls
+Content-Type: application/json
+
+{
+  "runId": "agent-run-001",
+  "toolName": "SearchCode",
+  "input": {
+    "query": "ToolDefinition",
+    "maxResults": 10
+  }
+}
+
+### Read file
+POST {{host}}/api/tool-calls
+Content-Type: application/json
+
+{
+  "runId": "agent-run-002",
+  "toolName": "ReadFile",
+  "input": {
+    "path": "AgentToolGateway.Api/Program.cs"
+  }
+}
+
+### Approval-required patch mock
+POST {{host}}/api/tool-calls
+Content-Type: application/json
+
+{
+  "runId": "agent-run-003",
+  "toolName": "ApplyPatch",
+  "input": {
+    "targetPath": "AgentToolGateway.Api/Program.cs",
+    "patch": "*** Begin Patch\n*** End Patch"
+  }
+}
+
+### Minimal Ollama/Qwen agent run
+POST {{host}}/api/agent-runs
+Content-Type: application/json
+
+{
+  "runId": "agent-run-004",
+  "prompt": "Search the code for ToolDefinition"
+}
